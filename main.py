@@ -97,11 +97,11 @@ def home():
         if coin.change[0] == '-':
             float_value = float(coin.change)
             if float_value <= -3:
-                message += f'Price of {coin.name} is up by {float_value * -1}% \n'
+                message += f'Price of {coin.name} is down by {float_value * -1}% \n'
         else:
             float_value = float(coin.change)
             if float_value >=3:
-                message += f'Price of {coin.name} is down by {float_value}% \n'
+                message += f'Price of {coin.name} is up by {float_value}% \n'
 
     if message != '':
         context = ssl.create_default_context()

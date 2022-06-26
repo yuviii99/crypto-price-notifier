@@ -24,5 +24,5 @@ If the price of the crypto changes by a certain percentage in the last 24 hours,
 
 ![App Screenshot](home.png)
 
-![Email Screenshot](email.png)
+![Email Screenshot](email_ss.png)
 
