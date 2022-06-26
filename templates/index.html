@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+
+    <title>Crypto Price Notifier</title>
+</head>
+
+<body>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <h1 class="float-start">Crypto Price Notifier</h1>
+            </div>
+            <div class="col">
+                <a class="btn btn-outline-dark float-end mt-2" href="{{ url_for('home') }}">Refresh</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <table class="table table-bordered align-middle">
+                    <thead class="table-dark">
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price (In USD)</th>
+                        <th>24 hr Change</th>
+                        <th width="6%">Remove</th>
+                    </thead>
+                    <tbody>
+                        {% for coin in currencies: %}
+                            {% if coin.change[0] == '-':%}
+                            <tr class="table-danger">
+                                <td>{{ coin.id }}</td>
+                                <td>{{ coin.name }}</td>
+                                <td>${{ coin.price }}</td>
+                                <td>{{ coin.change }} %</td>
+                                <td><a class="btn btn-dark" href="{{ url_for('delete', coin_id=coin.id) }}">❌</a></td>
+                            </tr>
+                            {% else: %}
+                            <tr class="table-success">
+                                <td>{{ coin.id }}</td>
+                                <td>{{ coin.name }}</td>
+                                <td>${{ coin.price }}</td>
+                                <td>{{ coin.change }} %</td>
+                                <td><a class="btn btn-dark" href="{{ url_for('delete', coin_id=coin.id) }}">❌</a></td>
+                            </tr>
+                            {%endif%}
+                        {% endfor %}
+                        <!-- <tr>
+                            <td>2</td>
+                            <td>Ethereum</td>
+                            <td>$2000</td>
+                            <td>+3 %</td>
+                            <td><a class="btn btn-dark" href="#">❌</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>LiteCoin</td>
+                            <td>$200</td>
+                            <td>-3 %</td>
+                            <td><a class="btn btn-dark" href="#">❌</a></td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-center">
+            <a class="btn btn-outline-dark" href="{{ url_for('add_crypto') }}" role="button">Add Crypto</a>
+        </div>
+    </div>
+</body>
+</html>
