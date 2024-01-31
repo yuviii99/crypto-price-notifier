@@ -1,5 +1,5 @@
 
-# CRYPTO PRICE NOTIFIER
+## CRYPTO PRICE NOTIFIER
 
 A CRUD Flask based web app that uses Coin Market Cap API to fetch the real-time prices of cryptocurrencies added in our wish list.
 
